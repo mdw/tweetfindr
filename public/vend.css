@@ -1,0 +1,23 @@
+a {
+  text-decoration: none;
+}
+.twit {
+  margin-top: 3px;
+  margin-bottom: 6px;
+  padding: 10px;
+}
+.link {
+  color: #33c;
+}
+.people {
+  color: #009933;
+}
+.hash {
+  color: #667;
+}
+.mainpic {
+  margin-top: 21px;
+}
+.yellow {
+  background-color:#ffff66;
+}
