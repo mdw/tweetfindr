@@ -1,0 +1,12 @@
+twitvend
+
+search twitter for hashtags and people using their API
+written in Sinatra (my first sinatra app) and templating in HAML
+
+How to use: http://pizzavendingmachines.com
+
+Search for #sinatra http://pizzavendingmachines.com/sinatra
+
+Search for @algore http://pizzavendingmachines.com/@algore
+
+
