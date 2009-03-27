@@ -1,6 +1,6 @@
 %html
   %head
-    %title= PageTitle + '#tags or @users'
+    %title= "Search for #tags or @users""
     %link{:rel => 'stylesheet', :href => 'vend.css', :type => 'text/css'}
   %body
     %center
@@ -19,7 +19,8 @@
       put "@bocanames" at the end: 
       %a{:href => '/@bocanames'} http://pizzavendingmachines.com/@bocanames
       %br
+
       %hr{:width => '80%'}
-      %br
-      %small= Credits 
+      %div{:class => 'copyright'}
+        %small= 'Powered by <a href=/sinatra>Sinatra</a> + <a href=/twitter>Twitter</a> (<a href="http://github.com/mdw/twitvend/tree/master">the source</a>)'
 
