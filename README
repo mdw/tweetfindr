@@ -1,12 +1,12 @@
-twitvend
+twitvend.git - yet another useless twitter search (YAUTS)
 
-search twitter for hashtags and people using their API
-written in Sinatra (my first sinatra app) and templating in HAML
+search twitter for hashtags and people using their search API
+written in Sinatra and templating in HAML
 
 How to use: http://pizzavendingmachines.com
 
-Search for #sinatra http://pizzavendingmachines.com/sinatra
+Search for hashtag like #sinatra http://pizzavendingmachines.com/sinatra
 
-Search for @algore http://pizzavendingmachines.com/@algore
+Search for user like @franksinatra http://pizzavendingmachines.com/@franksinatra
 
 
