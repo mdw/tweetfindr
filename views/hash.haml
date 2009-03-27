@@ -1,11 +1,12 @@
 %html
   %head
-    %title= PageTitle + '#' + params[:tag]
+    - sstring = @searchchar == '@' ? params[:tag] : "#{@searchchar}#{params[:tag]}"
+    %title= "Search Twitter for " + sstring
     %link{:rel => 'stylesheet', :href => 'vend.css', :type => 'text/css'}
   %body
     %center
-      %img{:src => Hat, :title => Credits, :class => 'mainpic'}
-      %h1= "twitter search for ##{params[:tag]}"
+      %img{:src => 'hat.gif', :title => Credits, :class => 'mainpic'}
+      %h1= "twitter search for " + sstring
 
       - for entry in @entries
         .twit

@@ -1,6 +1,6 @@
 %html
   %head
-    - sstring = @searchchar == '%3A' ? params[:tag] : "#{@searchchar}#{params[:tag]}"
+    - sstring = @searchchar == '%3A' ? params[:tag] : "##{params[:tag]}"
     %title= "Search Twitter for " + sstring
     %link{:rel => 'stylesheet', :href => 'vend.css', :type => 'text/css'}
   %body
@@ -25,6 +25,5 @@
             %a{:href=>entry['link']}= nicetime
 
       %hr{:width => '80%'}
-      %br
-      %small= Credits 
-
+      %div
+        %small= 'Powered by <a href=/sinatra>Sinatra</a> + <a href=/twitter>Twitter</a> (<a href="http://github.com/mdw/twitvend/master">the source</a>)'
