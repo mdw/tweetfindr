@@ -4,7 +4,8 @@
     %link{:rel => 'stylesheet', :href => 'vend.css', :type => 'text/css'}
   %body
     %center
-      %img{:src => 'hat.gif', :title => 'Powered by Sinatra and Twitter', :class => 'mainpic'}
+      %a{:href => '/', :title => 'Powered by Sinatra and Twitter'}
+        %img{:src => 'hat.gif', :border => '0', :class => 'mainpic'}
       %h1= "twitter search for #tags or @users"
       %hr{:width => '80%'}
       %br
