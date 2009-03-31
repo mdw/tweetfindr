@@ -1,7 +1,7 @@
 %html
   %head
     - sstring = @searchchar == '%3A' ? params[:tag] : "##{params[:tag]}"
-    %title= "Search Twitter for " + sstring
+    %title= "TweetFindr :: Search Twitter for " + sstring
     %link{:rel => 'stylesheet', :href => 'vend.css', :type => 'text/css'}
   %body
     %center
