@@ -6,7 +6,8 @@
   %body
     %center
       %a{:href => "/", :title => "Powered by Sinatra and Twitter"}
-        %img{:src => "hat.gif", :border => "0", :alt => "Frankie Baby", :class => "mainpic"}
+        %img{:src => "hat.gif", :border => "0", :alt => "Frankie Baby"}
+          .mainpic
       %h1= "twitter search for " + sstring
 
       - for entry in @entries
