@@ -1,0 +1,45 @@
+%html
+  %head
+    %title= "TweetFindr :: Search Twitter for #{@searchstr}"
+    %link{ :rel => 'stylesheet', :href => 'vend.css', :type => 'text/css'}
+  %body
+    / this view is powered by HAML
+    %center
+      %div{ :align => 'center', :width => '80%'}
+        %a{ :href => "/", :title => "Powered by Sinatra and Twitter"}
+          %img.mainpic{ :src => "hat.gif", :border => "0", :alt => "Frankie Baby"}>
+        %h1 
+          twitter search for
+          %span.yellow 
+            = @searchstr
+
+        - @tweets.each do |tweet|
+          .twit
+            - userhome = "http://twitter.com/" + tweet.from_user
+            - url = /(http?:\/\/[-\w\.]+[\d+]?[\/\w\/_\.\~]*[\?\S+]?)/
+            - tweet.text.gsub!(url, '<a class="link" href="\1">\1</a>')
+            - tweet.text.gsub!(/\@(\w+)/, '<a class="people" href="/@\1">@\1</a>')
+            - tweet.text.gsub!(/\#(\w+)/, '<a class="hash" href="/\1">#\1</a>')
+            %hr
+            %p
+              %a{ :href => userhome, :title => "view " + tweet.from_user + "'s Twitter page" }
+                %img.avatar{ :src => tweet.profile_image_url, :alt => tweet.from_user + "'s avatar" }>
+              = tweet.text
+            %span
+              tweet by
+              %a{ :href => '/@' + tweet.from_user }= '@' + tweet.from_user
+              on
+              %a{ :href => userhome + "/statuses/" + tweet.id.to_s}<
+                = Time.parse(tweet.created_at.to_s).strftime('%d/%m/%Y at %H:%M:%S')
+              / tweet.source undefined??
+
+      %br
+      %hr{ :width => '80%'}
+      .copyright
+        Powered by 
+        %a{ :href => '/sinatra'} Sinatra
+        + 
+        %a{ :href => '/twitter'} Twitter
+        (
+        %a{ :href => "http://github.com/mdw/tweetfindr/tree/master"} the source
+        )

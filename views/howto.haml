@@ -3,25 +3,27 @@
     %title= "Tweetfindr :: How to search for #tags or @users"
     %link{:rel => 'stylesheet', :href => 'vend.css', :type => 'text/css'}
   %body
+    / this view powered by HAML
     %center
       %a{:href => '/', :title => 'Powered by Sinatra and Twitter'}
-        %img{:src => 'hat.gif', :border => '0', :class => 'mainpic'}
-      %h1= "twitter search for #tags or @users"
+        %img.mainpic<{:src => 'hat.gif', :border => '0'}
+      %h1= "search Twitter for #tags or @users"
       %hr{:width => '80%'}
       %br
       To search for 
-      %span{ :class => 'yellow'} #sinatra
+      %span.yellow #sinatra
       , just put "sinatra" at the end of this url like so: 
       %a{:href => '/sinatra'} http://tweetfindr.com/sinatra
       %br
       %br
       To search for a user like 
-      %span{:class => 'yellow'} @algore
+      %span.yellow @algore
       , put "@algore" at the end: 
       %a{:href => '/@algore'} http://tweetfindr.com/@algore
       %br
 
       %hr{:width => '80%'}
-      %div{:class => 'copyright'}
-        %small= 'Powered by <a href=/sinatra>Sinatra</a> + <a href=/twitter>Twitter</a> (<a href="http://github.com/mdw/twitvend/tree/master">the source</a>)'
+      .copyright
+        %small= 'Powered by <a href=/sinatra>Sinatra</a> + <a href=/twitter>Twitter</a> |
+          (<a href="http://github.com/mdw/tweetfindr/tree/master">the source</a>)'
 
