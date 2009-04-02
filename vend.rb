@@ -1,10 +1,9 @@
 # vend.rb - who knows what it does?
-%w(rubygems sinatra haml rfeedparser).each { |gem| require gem }
+%w(rubygems sinatra twitter_search haml).each { |r| require r }
 
 configure do
-	TwitterSearchURL = "http://search.twitter.com/search.atom?q="
+   Debug = false
 end
-
 
 get '/' do
 	haml :howto
@@ -12,9 +11,12 @@ end
 
 get '/:tag' do |t|
 	headers 'Content-Type' => 'text/html; charset=utf-8'
-   @searchchar = t =~ /^\@/ ? '%3A' : '%23'  # %23 is hash # symbol, %3A is the @ symbol
-	res = FeedParser.parse(TwitterSearchURL + @searchchar + t)
-	@entries = res.entries
-	haml :show
+   @client = TwitterSearch::Client.new 'tweetfindr v0.2'
+
+   # add hash tag manually, since can't be passed in with URL
+   @searchstr = t =~ /^@/ ? t : '#' + t
+   @tweets = @client.query :q => @searchstr, :rpp => '25'
+   @tweets.each { |t| puts t.text } if Debug
+	haml :showtweets
 end
 

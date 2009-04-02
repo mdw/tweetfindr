@@ -1,7 +1,7 @@
 # application settings
 set :application, "tweetfindr.com"
-role :app, "209.123.234.193"
-role :web, "209.123.234.193"
+role :app, "tweetfindr.com"
+role :web, "tweetfindr.com"
 role :db, "tweetfindr.com", :primary => true
 
 set :deploy_to, "/var/www/#{application}"
@@ -11,7 +11,7 @@ default_run_options[:pty] = true
 
 # version control
 set :scm, :git
-set :repository,  "git://github.com/mdw/twitvend.git"
+set :repository,  "git://github.com/mdw/tweetfindr.git"
 set :branch, "master"
 set :checkout, "export"
 set :git_shallow_clone, 1
