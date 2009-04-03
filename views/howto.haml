@@ -6,7 +6,7 @@
     / this view powered by HAML
     %center
       %a{:href => '/', :title => 'Powered by Sinatra and Twitter'}
-        %img.mainpic<{:src => 'hat.gif', :border => '0'}
+        %img.mainpic<{:src => '/hat.gif', :border => '0'}
       %h1= "search Twitter for #tags or @users"
       %hr{:width => '80%'}
       %br
@@ -22,8 +22,14 @@
       %a{:href => '/@algore'} http://tweetfindr.com/@algore
       %br
 
-      %hr{:width => '80%'}
+      %br
+      %hr{ :width => '80%'}
       .copyright
-        %small= 'Powered by <a href=/sinatra>Sinatra</a> + <a href=/twitter>Twitter</a> |
-          (<a href="http://github.com/mdw/tweetfindr/tree/master">the source</a>)'
+        Powered by 
+        %a{ :href => '/sinatra'} Sinatra
+        + 
+        %a{ :href => '/twitter'} Twitter
+        (
+        %a{ :href => "http://github.com/mdw/tweetfindr/tree/master"} the source
+        )
 
