@@ -1,11 +1,12 @@
 # application settings
 set :application, "tweetfindr.com"
-role :app, "tweetfindr.com"
-role :web, "tweetfindr.com"
-role :db, "tweetfindr.com", :primary => true
+role :app, application
+role :web, application
 
 set :deploy_to, "/var/www/#{application}"
+set :deploy_via, :remote_cache
 set :user, "findr"
+set :runner, user
 set :keep_releases, 6
 default_run_options[:pty] = true
 
@@ -18,18 +19,26 @@ set :git_shallow_clone, 1
 
 
 namespace :deploy do
-   task :update_code do
- #     targetdir = Time.now.strftime("%Y%m%d%H%M%S")
- #     releasedir = "#{deploy_to}/releases/#{targetdir}"
- #     run "mkdir #{releasedir}"
-      run "git clone -q #{repository} #{release_path}"
+#   task :update_code do
+#      run "git clone -q #{repository} #{release_path}"
+#   end
+   task :start, :roles => [:web, :app] do
+      sudo "/etc/init.d/thin start"
    end
-   task :symlink do
-      run "ln -nfs #{release_path} #{deploy_to}/current"
+   
+   task :stop, :roles => [:web, :app] do
+      sudo "/etc/init.d stop"
    end
-	task :restart do
-		#run "/usr/local/bin/shotgun --server=thin --port=4567 #{current_path}/vend.rb &"
-		run "ruby #{deploy_to}/vend.rb -e production &"
-	end
+   
+   task :restart, :roles => [:web, :app] do
+      deploy.stop
+      deploy.start
+   end
+   
+   task :cold do   # prevent running rake:migrate
+      deploy.update
+      deploy.start
+   end
+   
 end
 
