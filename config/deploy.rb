@@ -17,17 +17,27 @@ set :branch, "master"
 set :checkout, "export"
 set :git_shallow_clone, 1
 
+namespace :log do
+   desc "tail -f access log"
+   task :access do
+      run "tail -f /var/www/tweetfindr.com/shared/log/access.log"
+   end
+   desc "tail the error log"
+   task :error do
+      run "tail /var/www/tweetfindr.com/shared/log/error.log"
+   end
+end
 
 namespace :deploy do
-#   task :update_code do
-#      run "git clone -q #{repository} #{release_path}"
-#   end
+   task :update_code do
+      run "git clone -q #{repository} #{release_path}"
+   end
    task :start, :roles => [:web, :app] do
       sudo "/etc/init.d/thin start"
    end
    
    task :stop, :roles => [:web, :app] do
-      sudo "/etc/init.d stop"
+      sudo "/etc/init.d/thin stop"
    end
    
    task :restart, :roles => [:web, :app] do

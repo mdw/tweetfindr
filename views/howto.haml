@@ -4,6 +4,7 @@
     %link{:rel => 'stylesheet', :href => 'vend.css', :type => 'text/css'}
   %body
     / this view powered by HAML
+    #sysmessage{ :align => 'center'}= "#{@SysMessage}"
     %center
       %a{:href => '/', :title => 'Powered by Sinatra and Twitter'}
         %img.mainpic<{:src => '/hat.gif', :border => '0'}

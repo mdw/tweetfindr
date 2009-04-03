@@ -1,6 +1,8 @@
 .DS_Store
 config/database.yml
 config/thin.yml
-config/mongrel)cluster.yml
+config/thin.local.yml
+config/mongrel_cluster.yml
+tmp/*
 db/*.sqlite3
 notes.txt
