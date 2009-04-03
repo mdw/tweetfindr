@@ -1,7 +1,7 @@
-twitvend.git - yet another useless twitter search
+tweetfindr.git - yet another useless twitter search
 
 search twitter for hashtags and people using their search API
-written in Sinatra and templating in HAML
+written in Sinatra using twitter-search gem and templating in HAML
 
 How to use: http://tweetfindr.com
 
