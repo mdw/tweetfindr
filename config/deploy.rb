@@ -47,7 +47,7 @@ namespace :deploy do
    
    task :cold do   # prevent running rake:migrate
       deploy.update
-      deploy.start
+      deploy.start 
    end
    
 end
