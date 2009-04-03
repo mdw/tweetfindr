@@ -1,11 +1,11 @@
 tweetfindr.git - yet another useless twitter search
 
 search twitter for hashtags and people using their search API
-written in Sinatra using twitter-search gem and templating in HAML
+written in Sinatra using twitter-search gem (templating in HAML)
+served up on tweetfindr.com by nginx -> thin
 
 How to use: http://tweetfindr.com
 
 Search for hashtag like #sinatra http://tweetfindr.com/sinatra
 
 Search for user like @franksinatra http://tweetfindr.com/@franksinatra
-
