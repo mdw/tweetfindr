@@ -19,8 +19,8 @@
             - userhome = "http://twitter.com/" + tweet.from_user
             - url = /(http?:\/\/[-\w\.]+[\d+]?[\/\w\/_\.\~]*[\?\S+]?)/
             - tweet.text.gsub!(url, '<a class="link" href="\1">\1</a>')
-            - tweet.text.gsub!(/\@(\w+)/, '<a class="people" href="/@\1">@\1</a>')
-            - tweet.text.gsub!(/\#(\w+)/, '<a class="hash" href="/\1">#\1</a>')
+            - tweet.text.gsub!(/\@(\w+)/, '<a class="people" href="/@\1" title="search for @\1">@\1</a>')
+            - tweet.text.gsub!(/\#(\w+)/, '<a class="hash" href="/\1" title="search for hashtag: \1">#\1</a>')
             %hr
             %p
               %a{ :href => userhome, :title => "view " + tweet.from_user + "'s Twitter page" }
@@ -28,7 +28,8 @@
               = tweet.text
             %span
               tweet by
-              %a{ :href => '/@' + tweet.from_user }= '@' + tweet.from_user
+              %a{ :href => '/@' + tweet.from_user, :title => "search for @" + tweet.from_user }
+                = '@' + tweet.from_user
               on
               %a{ :href => userhome + "/statuses/" + tweet.id.to_s}<
                 = Time.parse(tweet.created_at.to_s).strftime('%d/%m/%Y at %H:%M:%S')
