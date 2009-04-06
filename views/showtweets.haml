@@ -5,7 +5,7 @@
   %body
     / this view is powered by HAML
     %center
-      #sysmessage{ :align => 'center'}= "#{@SysMessage}"
+      #sysmessage{ :align => 'center'}= "#{@sysmessage}"
       %div{ :align => 'center', :width => '80%'}
         %a{ :href => "/", :title => "Powered by Sinatra and Twitter"}
           %img.mainpic{ :src => "hat.gif", :border => "0", :alt => "Frankie Baby"}>
@@ -23,13 +23,12 @@
             - tweet.text.gsub!(/\#(\w+)/, '<a class="hash" href="/\1" title="search for hashtag: \1">#\1</a>')
             %hr
             %p
-              %a{ :href => userhome, :title => "view " + tweet.from_user + "'s Twitter page" }
+              %a{ :href => userhome, :title => "view @" + tweet.from_user + "'s Twitter page" }
                 %img.avatar{ :src => tweet.profile_image_url, :alt => tweet.from_user + "'s avatar" }>
               = tweet.text
             %span
               tweet by
-              %a{ :href => '/@' + tweet.from_user, :title => "search for @" + tweet.from_user }
-                = '@' + tweet.from_user
+              = peoplelink(tweet.from_user)
               on
               %a{ :href => userhome + "/statuses/" + tweet.id.to_s}<
                 = Time.parse(tweet.created_at.to_s).strftime('%d/%m/%Y at %H:%M:%S')
