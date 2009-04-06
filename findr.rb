@@ -23,12 +23,12 @@ class Findr < Sinatra::Application
 	   haml :howto
    end
 
-   get '/:tag', :agent => /Googlebot/ do
+   get '/:tag', :agent => /[Googlebot|Slurp]/ do
       halt 401, 'go away!'
    end
 
    get '/tweetfindr' do
-      @sysmessage = 'yeah baby'
+      @sysmessage = 'tweetfindr is the sinatra-powered, twitter-searchin, totally useless toy'
       pass
    end
    
