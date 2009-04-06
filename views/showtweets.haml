@@ -20,7 +20,7 @@
             - url = /(http?:\/\/[-\w\.]+[\d+]?[\/\w\/_\.\~]*[\?\S+]?)/
             - tweet.text.gsub!(url, '<a class="link" href="\1">\1</a>')
             - tweet.text.gsub!(/\@(\w+)/, '<a class="people" href="/@\1" title="search for @\1">@\1</a>')
-            - tweet.text.gsub!(/\#(\w+)/, '<a class="hash" href="/\1" title="search for hashtag: \1">#\1</a>')
+            - tweet.text.gsub!(/\#(\w+)/, '<a class="hash" href="/\1" title="search for #\1">#\1</a>')
             %hr
             %p
               %a{ :href => userhome, :title => "view @" + tweet.from_user + "'s Twitter page" }
@@ -32,7 +32,7 @@
               on
               %a{ :href => userhome + "/statuses/" + tweet.id.to_s}<
                 = Time.parse(tweet.created_at.to_s).strftime('%d/%m/%Y at %H:%M:%S')
-              / tweet.source undefined??
+              / = tweet.source
 
       %br
       %hr{ :width => '80%'}
