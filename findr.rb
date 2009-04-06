@@ -23,7 +23,7 @@ class Findr < Sinatra::Application
 	   haml :howto
    end
 
-   get '/:tag', :agent => /[Googlebot|Slurp]/ do
+   get '/:tag', :agent => /Googlebot|Slurp/ do
       halt 401, 'go away!'
    end
 
@@ -32,7 +32,7 @@ class Findr < Sinatra::Application
       pass
    end
    
-   get '/:tag' do |t|
+   get '/:tag/?' do |t|
       # add hash tag manually, since can't be passed in with URL
       @searchstr = t =~ /^@/ ? t : '#' + t
       @client = TwitterSearch::Client.new 'tweetfindr v0.2'
