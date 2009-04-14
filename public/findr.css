@@ -1,0 +1,29 @@
+.twit {
+  margin: 3px 0 4px 0;
+  padding: 2px 10px;
+  width: 770px;
+}
+.mainpic { margin-top: 21px; }
+.avatar { 
+  border: 1px solid black;
+  float:left;
+  margin-right: 10px;
+  width: 48px;
+}
+ 
+.yellow { background-color: #ff6; }
+.lightgray { color:#eeeeee; }
+div.copyright {
+  font-size: 10px;
+  margin-bottom: 20px;
+}
+ 
+/* various link styles */
+a { text-decoration: none; }
+.link { color: #33c; }
+.people { color: #093; }
+.hash { color: #c33; }
+a:hover, .link:hover, .people:hover, .hash:hover {
+  text-decoration: underline;
+}
+
