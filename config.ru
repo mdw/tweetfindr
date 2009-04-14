@@ -1,2 +1,2 @@
-require 'findr'
+require 'findr.rb'
 run Findr
