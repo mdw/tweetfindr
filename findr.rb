@@ -10,12 +10,12 @@ configure do
       :username => "tweetfinder",
       :password => "tf1ndr"
    )
-   
+
    begin
       ActiveRecord::Schema.define do
          create_table :searches do |t|
             t.string :sstring
-            t.integer :howmany
+            t.integer :howmany, :default => 1
             t.timestamps
          end
       end
@@ -28,12 +28,6 @@ end
 class Search < ActiveRecord::Base
    validates_uniqueness_of :sstring
    attr_accessor :howmany
-
-   def increment(id)
-      #s = find(:id)
-      #@count = s.howmany.to_i + 1
-      #s.update_attribute(:howmany, @count)
-   end
 end
 
 
@@ -66,14 +60,15 @@ class Findr < Sinatra::Application
       @searchstr = t =~ /^@/ ? t : '#' + t
 
       # save search string to database
-      @s = Search.find_by_sstring(params[:tag])
-      if !@s.nil?
-         @s.increment(@s.id)
+      sst = Search.find_by_sstring(t)
+      if !sst.nil?
+         sst.increment!(:howmany)
+         @sysmessage = "<!-- found it #{sst.sstring}: #{sst.howmany} -->"
       else
-         search = Search.new(:sstring => t, :howmany => 1)
-         if search.save
+         snew = Search.new(:sstring => t)
+         if snew.save
             status(201)
-            @sysmessage = "(saved #{search.sstring} to the database)"
+            @sysmessage = "(saved #{snew.sstring} to the database)"
          else
             status(412)
             "Error: dup;licate search term, should have incremented counter\n"
