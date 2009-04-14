@@ -39,10 +39,26 @@ class Database
   end
   
   def self.connect_to_database_for_environment( environment )
-    ActiveRecord::Base.establish_connection( connection_string_for( environment ) )
+    #ActiveRecord::Base.establish_connection( connection_string_for( environment ))
+    config = @@configuration[environment.to_s]
+    unless config.nil?
+      adapter = config['adapter']
+      database = config['database']
+      username = config['username']
+      password = config['password']
+      host = config['host']
+      ActiveRecord::Base.establish_connection(
+        :adapter => adapter, :database => database, :username => username, :password => password)
+      puts "connected to #{database} database in #{environment} environment"
+    else
+      raise Exception.new("No database found for '#{environment}' environment. Please add to #{@@configuration_file}")
+    end
   end
   
   def self.connection_string_for( environment )
+
+    # deprecated
+
     config = @@configuration[environment.to_s]
     unless config.nil?
       adapter = config['adapter']
@@ -51,21 +67,17 @@ class Database
       password = config['password']
       host = config['host']
  
-      database_connection_string = "#{adapter}:"
+      database_connection_string = ":adapter => '#{adapter}', :database => '#{database}'"
       unless username.blank?
-        database_connection_string << username
-        database_connection_string << ":#{password}" unless password.blank?
+        database_connection_string << ", :username => '#{username}'"
+        database_connection_string << ", :password => '#{password}'" unless password.blank?
       end
-      unless host.blank?
-        database_connection_string << "@#{host}"
-      end
-      database_connection_string << (database.blank? ? "/" : "//#{database}")
+      database_connection_string << ", :host => '#{host}'" unless host.blank?
+      return database_connection_string
     else
       raise Exception.new("No database found for '#{environment}' environment. Please add to #{@@configuration_file}")
     end
   end
-
-
 
 end
 
