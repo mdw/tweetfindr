@@ -1,10 +1,11 @@
 %html
   %head
     %title= "TweetFindr :: Search Twitter for #{@searchstr}"
-    %link{ :rel => 'stylesheet', :href => 'vend.css', :type => 'text/css'}
+    %link{ :rel => 'stylesheet', :href => 'findr.css', :type => 'text/css'}
   %body
     / this view is powered by HAML
     %center
+      #sysmessage.lightgray{ :align => 'center'}= @sysmessage
       %div{ :align => 'center', :width => '80%'}
         %a{ :href => "/", :title => "Powered by Sinatra and Twitter"}
           %img.mainpic{ :src => "hat.gif", :border => "0", :alt => "Frankie Baby"}>
