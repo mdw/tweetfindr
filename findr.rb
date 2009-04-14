@@ -1,6 +1,6 @@
 # findr.rb - another useless Twitter search app
 %w(rubygems sinatra activerecord twitter_search haml).each { |r| require r }
-require "lib/helpers.rb" 
+%w( database helpers ).each { |lib| require "lib/#{lib}.rb" }
 
 
 class Search < ActiveRecord::Base
@@ -13,13 +13,8 @@ class Findr < Sinatra::Application
    
    configure do
       @sysmessage = ""
+      Database.for_environment( environment )
 
-      ActiveRecord::Base.establish_connection(
-        :adapter => "mysql",
-        :database => "tweetfindr_dev",
-        :username => "tweetfinder",
-        :password => "tf1ndr"
-      )
       begin
          ActiveRecord::Schema.define do
             create_table :searches do |t|
