@@ -1,28 +1,6 @@
 # findr.rb - another useless Twitter search app
 %w(rubygems sinatra activerecord twitter_search haml).each { |r| require r }
-%w( database helpers ).each { |lib| require "lib/#{lib}.rb" }
-
-configure do
-   @sysmessage = ""
-   ActiveRecord::Base.establish_connection(
-      :adapter => "mysql",
-      :database => "tweetfindr_dev",
-      :username => "tweetfinder",
-      :password => "tf1ndr"
-   )
-
-   begin
-      ActiveRecord::Schema.define do
-         create_table :searches do |t|
-            t.string :sstring
-            t.integer :howmany, :default => 1
-            t.timestamps
-         end
-      end
-   rescue ActiveRecord::StatementInvalid
-      # schema already exists
-   end
-end
+require "lib/helpers.rb" 
 
 
 class Search < ActiveRecord::Base
@@ -33,6 +11,29 @@ end
 
 class Findr < Sinatra::Application
    
+   configure do
+      @sysmessage = ""
+
+      ActiveRecord::Base.establish_connection(
+        :adapter => "mysql",
+        :database => "tweetfindr_dev",
+        :username => "tweetfinder",
+        :password => "tf1ndr"
+      )
+      begin
+         ActiveRecord::Schema.define do
+            create_table :searches do |t|
+               t.string :sstring
+               t.integer :howmany, :default => 1
+               t.timestamps
+            end
+         end
+      rescue ActiveRecord::StatementInvalid
+         # schema already exists
+      end
+   end
+
+
    helpers do
       include Helpers  # all my helpers defined in helpers.rb
       #
