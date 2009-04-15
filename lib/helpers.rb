@@ -3,7 +3,7 @@
 module Helpers
 
      def link_to(url, title, klass, inner)
-        '<a href="' + url + '" title="' + title + '" class="' + klass + '">' + inner + '</a>'
+        '<a href="' + url + '" title="' + title + '" class="' + klass + '">' + inner + "</a>"
      end
 
      def termlink(hashtag)
@@ -13,12 +13,11 @@ module Helpers
      end
 
      def peoplelink(username)
-        # why does the request.host fail to have portnum here when it works in above method?
-        #url = "http://" + request.host + '/@' + username 
-        # should check on environment to decide what link to render...
-        url = "http://" + request.host
-        url << ":#{request.port}" unless request.port.nil?
-        url << "/@#{username}"
+        if request.host == 'localhost'
+           url = "http://" + request.host + ":#{request.port}/@#{username}"
+        else
+           url = "http://tweetfindr.com/@#{username}"
+        end
         title = 'search for @' + username 
         link_to(url, title, "people", '@'+username)
      end
