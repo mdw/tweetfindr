@@ -28,7 +28,6 @@ class Findr < Sinatra::Application
       end
    end
 
-
    helpers do
       include Helpers  # all my helpers defined in helpers.rb
       #
@@ -39,7 +38,8 @@ class Findr < Sinatra::Application
    end
 
    get '/' do
-      haml :howto
+      #haml :howto
+      redirect '/howto.html'
    end
 
    get '/:tag', :agent => /Googlebot|Slurp/ do
