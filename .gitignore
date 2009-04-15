@@ -2,7 +2,6 @@
 config/database.yml
 config/thin.yml
 config/thin.local.yml
-config/mongrel_cluster.yml
+config/deploy.rb
 tmp/*
-db/*.sqlite3
 notes.txt
