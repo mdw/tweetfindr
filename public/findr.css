@@ -13,6 +13,11 @@
  
 .yellow { background-color: #ff6; }
 .lightgray { color:#eeeeee; }
+
+div#top10 { margin: 20px 0 16px 0; }
+div#top10 table th { background-color:#e3e3e3; }
+div#top10 table tr td { padding-left:3px; }
+
 div.copyright {
   font-size: 10px;
   margin-bottom: 20px;
