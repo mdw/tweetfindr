@@ -4,6 +4,7 @@
     %link{:rel => 'stylesheet', :href => 'findr.css', :type => 'text/css'}
   %body
     / this view powered by HAML
+
     #sysmessage{ :align => 'center'}= "#{@sysmessage}"
     %center
       %a{:href => '/', :title => 'Powered by Sinatra and Twitter'}
@@ -21,9 +22,18 @@
       %span.yellow @algore
       , put "@algore" at the end: 
       %a{:href => '/@algore'} http://tweetfindr.com/@algore
-      %br
 
-      %br
+      #top10
+        %table{ :border => 1}
+          %th{:colspan => 2 } Top Ten Tweetfindr Searches
+          - @topten.each do |t| 
+            %tr
+              %td{:align => 'center'} 
+                =t.howmany.to_s
+              %td 
+                %a{ :href => "/#{t.sstring}" } 
+                  =t.sstring
+
       %hr{ :width => '80%'}
       .copyright
         Powered by 

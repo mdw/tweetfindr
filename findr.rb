@@ -5,7 +5,10 @@
 
 class Search < ActiveRecord::Base
    validates_uniqueness_of :sstring
-   attr_accessor :howmany
+
+   def self.find_top_ten
+      find(:all, :order => "howmany DESC", :limit => 10)
+   end
 end
 
 
@@ -38,8 +41,9 @@ class Findr < Sinatra::Application
    end
 
    get '/' do
-      #haml :howto
-      redirect '/howto.html'
+      #redirect '/howto.html'
+      @topten = Search.find_top_ten
+      haml :howto
    end
 
    get '/:tag', :agent => /Googlebot|Slurp/ do
