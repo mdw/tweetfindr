@@ -56,18 +56,17 @@ class Findr < Sinatra::Application
       @searchstr = t =~ /^@/ ? t : '#' + t
 
       # save search string to database
-      sst = Search.find_by_sstring(t)
+      sst = Search.find_by_sstring(t.downcase)
       if !sst.nil?
          sst.increment!(:howmany)
-         @sysmessage = "<!-- found it #{sst.sstring}: #{sst.howmany} -->"
       else
-         snew = Search.new(:sstring => t)
+         snew = Search.new(:sstring => t.downcase)
          if snew.save
             status(201)
             @sysmessage = "(saved #{snew.sstring} to the database)"
          else
             status(412)
-            "Error: dup;licate search term, should have incremented counter\n"
+            "Error: duplicate search term, should have incremented counter\n"
          end
       end
 
