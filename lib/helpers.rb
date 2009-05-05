@@ -2,19 +2,22 @@
 
 module Helpers
 
-     def link_to(url, title, klass, inner)
-        '<a href="' + url + '" title="' + title + '" class="' + klass + '">' + inner + '</a>'
+     # we write lotsa links
+     def link_to_home
+        img = '<img src="/hat.gif" alt="Frankie Baby" class="mainpic" border="0"/>'
+        '<a href="/" title="Powered by Sinatra and Twitter">' + img + '</a>'
      end
 
      def termlink(hashtag)
         url = "/#{hashtag}"
         title = 'search for #' + hashtag
-        link_to(url, title, "hash", '#'+hashtag)
+        '<a href="' + url + '" title="' + title + '" class="hash">#' + hashtag + '</a>'
      end
 
      def peoplelink(username)
         url = "/@#{username}"
         title = 'search for @' + username 
-        link_to(url, title, "people", '@'+username)
+        '<a href="' + url + '" title="' + title + '" class="people">@' + username + '</a>'
      end
+
 end

@@ -12,7 +12,7 @@
 }
  
 .yellow { background-color: #ff6; }
-.lightgray { color:#eeeeee; }
+.lightgray { color:#dddddd; margin-top:-5px; font-size:0.9em; }
 .tweetclient { color:#969696; }
 
 div#top10 { margin: 20px 0 16px 0; }

@@ -7,8 +7,7 @@
 
     #sysmessage{ :align => 'center'}= "#{@sysmessage}"
     %center
-      %a{:href => '/', :title => 'Powered by Sinatra and Twitter'}
-        %img.mainpic{:src => '/hat.gif', :border => '0'}<
+      =link_to_home
       %h1= "search Twitter for #tags or @users"
       %hr{:width => '80%'}
       %br
@@ -25,7 +24,7 @@
 
       #top10
         %table{ :border => 1}
-          %th{:colspan => 2 } Top Ten Tweetfindr Searches
+          %th{:colspan => 2 } Top 10 Tweetfindr Searches
           - @topten.each do |t| 
             %tr
               %td{:align => 'center'} 

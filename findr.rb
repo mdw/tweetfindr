@@ -17,31 +17,17 @@ class Findr < Sinatra::Application
    configure do
       @sysmessage = ""
       Database.for_environment( environment )
-
-      begin
-         ActiveRecord::Schema.define do
-            create_table :searches do |t|
-               t.string :sstring
-               t.integer :howmany, :default => 1
-               t.timestamps
-            end
-         end
-      rescue ActiveRecord::StatementInvalid
-         # schema already exists
-      end
    end
 
    helpers do
       include Helpers  # all my helpers defined in helpers.rb
       #
-      # def link_to(url, title, klass, inner)
+      # def link_to_home
       # def termlink(hashtag)
       # def peoplelink(username)
-      #
    end
 
    get '/' do
-      #redirect '/howto.html'
       @topten = Search.find_top_ten
       haml :howto
    end
