@@ -11,6 +11,9 @@ class Search < ActiveRecord::Base
    end
 end
 
+class Icon < ActiveRecord::Base
+end
+
 
 class Findr < Sinatra::Application
    
@@ -45,6 +48,11 @@ class Findr < Sinatra::Application
       # add hash tag manually, since can't be passed in with URL
       @searchstr = t =~ /^@/ ? t : '#' + t
 
+      # build array of twitter client icons from database
+      icons = Icon.find(:all)
+      @iconhash= {}
+      icons.each {|i| @iconhash[i.client.downcase] = i.icon}
+
       # save search string to database
       sst = Search.find_by_sstring(t.downcase)
       if !sst.nil?
@@ -63,6 +71,12 @@ class Findr < Sinatra::Application
       # get twitter search results
       @client = TwitterSearch::Client.new 'tweetfindr v0.2'
       @tweets = @client.query :q => @searchstr, :rpp => '25'
+     
+        # should lookup icons here and tack onto array
+        #@clienticon = Icon.find_by_client(clientname.downcase)
+        #@sysmessage = @clienticon.icon if !@clienticon.nil?
+        #tweet.icon = @clienticon.icon if !@clienticon.nil?
+    
       headers 'Content-Type' => 'text/html; charset=utf-8'
       haml :showtweets
    end

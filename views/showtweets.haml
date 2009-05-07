@@ -32,11 +32,16 @@
               %a{ :href => userhome + "/statuses/" + tweet.id.to_s}<
                 = Time.parse(tweet.created_at.to_s).strftime('%d/%m/%Y at %H:%M:%S')
             %span.tweetclient
-              via 
               - url = /(http?:\/\/[-\w\.]+[\d+]?[\/\w\/_\.\~]*)/
               - clientlink = tweet.source.match(url)
               - clientname = tweet.source.match(/&gt;(.*)&lt;/).to_s.slice(4..-5)
-              %a.tweetclient{ :href => clientlink }= clientname
+              %a.tweetclient{ :href => clientlink, :title => clientname}
+                - unless @iconhash[clientname.downcase].nil?
+                  - iconsrc = '/icons/' + @iconhash[clientname.downcase]
+                  %img{:src => iconsrc, :alt => clientname, :height => 24, :border => '0', :style => 'margin-bottom:-5px;'}
+                - else
+                  via 
+                  = clientname
 
       %br
       %hr{ :width => '80%'}
