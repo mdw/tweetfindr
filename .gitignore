@@ -1,7 +1,9 @@
 .DS_Store
+Capfile
 config/database.yml
 config/thin.yml
 config/thin.local.yml
 config/deploy.rb
+sql
 tmp/*
 notes.txt

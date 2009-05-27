@@ -6,6 +6,11 @@ served up on tweetfindr.com by nginx -> thin
 
 How to use: http://tweetfindr.com
 
-Search for hashtag like #sinatra http://tweetfindr.com/sinatra
+Search for hashtags like #sinatra by appending string without # like so:
+ http://tweetfindr.com/sinatra
 
-Search for user like @franksinatra http://tweetfindr.com/@franksinatra
+Search for users by appending username with @ mark like so:
+ http://tweetfindr.com/@franksinatra
+
+enjoy!
+

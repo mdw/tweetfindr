@@ -20,4 +20,26 @@ module Helpers
         '<a href="' + url + '" title="' + title + '" class="people">@' + username + '</a>'
      end
 
+     def link_to_client( clientname, href, img )
+        image = '<img src="' + img + '" alt="' + clientname + '" border="0"/>'
+        '<a href="' + href + '" title="' + clientname + '">' + image + '</a>'
+     end
+
+     # lookup twitter client info from YAML file
+     def get_icon(clientname)
+        @icons.each do |i| 
+          @sysmessage = i.icon if i.client == clientname.downcase
+          @ticon = i.icon if i.client == clientname.downcase
+        end
+        return @ticon
+     end
+
+     def tweetclient_icon( client )
+        #path = File.join(File.join(ENV['HOME'], "config"), "tweetclients.yml")
+        path = "./config/tweetclients.yml"
+        clientlist = YAML::load_file(path)
+        iconfile = clientlist[client]['icon'] || "twitterrific.png"
+        "/icons" + iconfile 
+     end
+
 end
