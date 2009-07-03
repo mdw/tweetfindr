@@ -12,6 +12,7 @@ class Search < ActiveRecord::Base
 end
 
 class Icon < ActiveRecord::Base
+	# time to try datamapper?
 end
 
 
