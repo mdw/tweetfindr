@@ -9,6 +9,10 @@ class Search < ActiveRecord::Base
    def self.find_top_ten
       find(:all, :order => "howmany DESC", :limit => 10)
    end
+
+	def self.find_last_ten
+		find(:all, :order => "id DESC", :limit => 10)
+	end
 end
 
 class Icon < ActiveRecord::Base
@@ -33,6 +37,7 @@ class Findr < Sinatra::Application
 
    get '/' do
       @topten = Search.find_top_ten
+      @lastten = Search.find_last_ten
       haml :howto
    end
 

@@ -21,8 +21,9 @@
       %span.yellow @algore
       , put "@algore" at the end: 
       %a{:href => '/@algore'} http://tweetfindr.com/@algore
+      %hr{:width => '80%'}
 
-      #top10
+      #top10{ :style => 'float:left'}
         %table{ :border => 1}
           %th{:colspan => 2 } Top 10 Tweetfindr Searches
           - @topten.each do |t| 

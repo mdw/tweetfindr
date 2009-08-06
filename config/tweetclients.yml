@@ -1,0 +1,52 @@
+destroytwitter:
+  name: destroytwitter
+  icon: destroytwitter.png
+
+gwibber:
+  name: gwibber
+  icon: gwibber.png
+
+nambu:
+  name: nambu
+  icon: nambu.png
+
+syrinx:
+  name: syrinx
+  icon: syrinx.png
+
+talkingpuffin:
+  name: talkingpuffin
+  icon: talkingpuffin.png
+
+tweetdeck:
+  name: tweetdeck
+  icon: tweetdeck.png
+
+tweetie:
+  name: tweetie
+  icon: tweetie.png
+
+twhirl:
+  name: twhirl
+  icon: twhirl.jpg
+
+twidget:
+  name: twidget
+  icon: twidget.gif
+
+twitterfon:
+  name: twitterfon
+  icon: twitterfon.png
+
+twitterrific:
+  name: twitterrific
+  icon: twitterrific.png
+
+wefollow:
+  name: wefollow
+  icon: wefollow.gif
+
+yoolink:
+  name: yoolink
+  icon: yoolink.gif
+
