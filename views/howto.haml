@@ -34,6 +34,17 @@
                 %a{ :href => "/#{t.sstring}" } 
                   =t.sstring
 
+      #last10
+        %table{ :border => 1}
+          %th{:colspan => 2 } Last 10 Search Terms
+          - @lastten.each do |t| 
+            %tr
+              %td{:align => 'center'} 
+                =t.howmany.to_s
+              %td 
+                %a{ :href => "/#{t.sstring}" } 
+                  =t.sstring
+
       %hr{ :width => '80%'}
       .copyright
         Powered by 
