@@ -34,13 +34,11 @@
                 %a{ :href => "/#{t.sstring}" } 
                   =t.sstring
 
-      #last10
+      #last10{ :style => 'float:left' }
         %table{ :border => 1}
-          %th{:colspan => 2 } Last 10 Search Terms
+          %th{:colspan => 2 } Most Recent Search Terms
           - @lastten.each do |t| 
             %tr
-              %td{:align => 'center'} 
-                =t.howmany.to_s
               %td 
                 %a{ :href => "/#{t.sstring}" } 
                   =t.sstring

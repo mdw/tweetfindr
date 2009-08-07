@@ -15,9 +15,10 @@
 .lightgray { color:#dddddd; margin-top:-5px; font-size:0.9em; }
 .tweetclient { color:#969696; }
 
-div#top10 { margin: 20px 0 16px 0; }
+div#top10 { margin: 20px 20px 16px 0; }
 div#top10 table th { background-color:#e3e3e3; }
 div#top10 table tr td { padding-left:3px; }
+div#last10 table th { background-color:#e3e3e3; }
 
 div.copyright {
   font-size: 10px;
